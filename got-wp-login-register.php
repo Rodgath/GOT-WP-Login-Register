@@ -23,7 +23,13 @@ class GotWpLoginRegister {
 	}
 	
 	private function constants() {
-		
+		defined('LOGAN_PREFIX') || define('LOGAN_PREFIX', 'logan_');
+		defined('LOGAN_DIR') || define('LOGAN_DIR', trailingslashit(plugin_dir_path(__FILE__)));
+		defined('LOGAN_URI') || define('LOGAN_URI', trailingslashit(plugin_dir_url(__FILE__)));
+		defined('LOGAN_ADMIN') || define('LOGAN_ADMIN', LOGAN_DIR.trailingslashit('admin'));
+		defined('LOGAN_METABOX') || define('LOGAN_METABOX', LOGAN_DIR.trailingslashit('metabox'));
+		defined('LOGAN_INC') || define('LOGAN_INC', LOGAN_DIR.trailingslashit('includes'));
+		defined('LOGAN_ASSETS') || define('LOGAN_ASSETS', LOGAN_URI.trailingslashit('assets'));
 	}
 	
 	/**
