@@ -20,6 +20,9 @@ class GotWpLoginRegister {
 		/* Load constants */
 		$this->constants();
 		
+		/* Load menu */
+		add_action('admin_menu', array($this, 'menu'));
+		
 		/* Internationalization */
 		add_action('init', array($this, 'i18n'));
 		
