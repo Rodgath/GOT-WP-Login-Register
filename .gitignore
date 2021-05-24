@@ -1,0 +1,17 @@
+.DS_Store
+
+# Composer PHAR
+composer.phar
+
+# Managed by Composer
+/vendor/
+
+# composer.lock
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# ignore node dependency directories
+node_modules/
