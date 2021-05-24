@@ -17,6 +17,9 @@ class GotWpLoginRegister {
 	
 	public function __construct() {
 		
+		/* Load constants */
+		$this->constants();
+		
 		/* Internationalization */
 		add_action('init', array($this, 'i18n'));
 		
