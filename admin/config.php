@@ -38,10 +38,10 @@ $parameters = array(
 	'parent_slug'      => '', # The slug name for the parent menu (or the file name of a standard WordPress admin page).
 	'admin_bar_menu'   => true, # 'true' to show panel in admin bar menu.
 	'import_export'    => true, # 'true' to enable import/export field.
-	'log_title'        => __('Changelog', 'dilaz-panel'),
-	'log_url'          => '#', # leave empty to disable.
-	'doc_title'        => __('Documentation', 'dilaz-panel'),
-	'doc_url'          => '#', # leave empty to disable.
-	'support_title'    => __('Support', 'dilaz-panel'),
-	'support_url'      => '#', # leave empty to disable.
+	// 'log_title'        => __('Changelog', 'dilaz-panel'),
+	// 'log_url'          => '#', # leave empty to disable.
+	// 'doc_title'        => __('Documentation', 'dilaz-panel'),
+	// 'doc_url'          => '#', # leave empty to disable.
+	// 'support_title'    => __('Support', 'dilaz-panel'),
+	// 'support_url'      => '#', # leave empty to disable.
 );
