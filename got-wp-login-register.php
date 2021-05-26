@@ -1,6 +1,6 @@
 <?php 
 /*
-Plugin Name: GOT-WP-Login-Register
+Plugin Name: GOT WP Login Register
 Plugin URI: https://github.com/Rodgath/GOT-WP-Login-Register
 Description: Google One Tap Login and Register for WordPress.
 Author: Rodgath
@@ -93,6 +93,7 @@ class GotWpLoginRegister {
 		
 		/* change the script tag by adding 'async defer' and return it. */
 		$tag = '<script id="'. $handle .'" src="'. esc_url( $src ) .'" async defer></script>';
+		
 		return $tag;
 	}
 	
