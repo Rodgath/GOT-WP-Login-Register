@@ -55,7 +55,8 @@ class GotWpLoginRegister {
 	
 	public function pluginInit()
 	{
-		
+		/* Internationalization */
+		$this->i18n();
 	}
 	
 	public function pluginLoaded()
