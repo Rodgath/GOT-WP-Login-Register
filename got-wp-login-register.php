@@ -21,9 +21,6 @@ class GotWpLoginRegister {
 		/* Load constants */
 		$this->constants();
 		
-		/* Load menu */
-		add_action('admin_menu', array($this, 'menu'));
-		
 		/* Plugin init */
 		add_action('init', array($this, 'pluginInit'));
 		
@@ -64,11 +61,6 @@ class GotWpLoginRegister {
 	public function pluginLoaded()
 	{
 		add_filter('script_loader_tag', array($this, 'addLibClientAttr'), 10, 3);		
-	}
-	
-	public function menu()
-	{
-		
 	}
 	
 	public function includes()
