@@ -92,7 +92,7 @@ class GotWpLoginRegister {
 		}
 		
 		/* change the script tag by adding 'async defer' and return it. */
-		$tag = '<script src="' . esc_url( $src ) . '" async defer></script>';
+		$tag = '<script id="'. $handle .'" src="'. esc_url( $src ) .'" async defer></script>';
 		return $tag;
 	}
 	
