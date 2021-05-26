@@ -25,6 +25,9 @@ class GotWpLoginRegister {
 		
 		/* Internationalization */
 		add_action('init', array($this, 'i18n'));
+
+		/* Load frontend styles and scripts */
+		add_action('wp_enqueue_scripts', array($this, 'frontend_scripts'));
 		
 	}
 	
@@ -57,7 +60,8 @@ class GotWpLoginRegister {
 	}
 	
 	public function frontend_scripts() {
-		
+		wp_register_script('gotwplr-client-lib', 'https://accounts.google.com/gsi/client', array(), false, false);
+		wp_enqueue_script('gotwplr-client-lib');
 	}
 	
 }
