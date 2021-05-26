@@ -28,7 +28,7 @@ class GotWpLoginRegister {
 		add_action('init', array($this, 'i18n'));
 		
 		/* Add plugin overrides */
-		add_action('plugins_loaded', array($this, 'pluginInit'));
+		add_action('plugins_loaded', array($this, 'pluginLoaded'));
 
 		/* Load frontend styles and scripts */
 		add_action('wp_enqueue_scripts', array($this, 'frontend_scripts'));
@@ -53,7 +53,7 @@ class GotWpLoginRegister {
 		load_plugin_textdomain('got-wp-lr', false, dirname(plugin_basename(__FILE__)).'/languages/');
 	}
 	
-	public function pluginInit()
+	public function pluginLoaded()
 	{
 		add_filter('script_loader_tag', array($this, 'addLibClientAttr'), 10, 3);		
 	}
