@@ -33,6 +33,8 @@ class GotWpLoginRegister {
 		/* Load frontend styles and scripts */
 		add_action('wp_enqueue_scripts', array($this, 'frontend_scripts'));
 		
+		/* Includes */
+		$this->includes();		
 	}
 	
 	private function constants()
@@ -50,7 +52,7 @@ class GotWpLoginRegister {
 	 */
 	public function i18n()
 	{
-		load_plugin_textdomain('got-wp-lr', false, dirname(plugin_basename(__FILE__)).'/languages/');
+		load_plugin_textdomain( 'got-wp-lr', false, dirname(plugin_basename(__FILE__)) . '/languages/' );
 	}
 	
 	public function pluginInit()
@@ -71,6 +73,7 @@ class GotWpLoginRegister {
 	
 	public function includes()
 	{
+		require_once GOTWPLR_ADMIN . 'admin.php';
 		
 	}
 	
@@ -89,7 +92,7 @@ class GotWpLoginRegister {
 	 * Optimize page loading speed by adding
 	 * Google client library 'async' and 'defer' attributes
 	 */
-	public function addLibClientAttr($tag, $handle, $src)
+	public function addLibClientAttr( $tag, $handle, $src )
 	{
 		
 		/* if not our script, do nothing and return original $tag */
@@ -98,7 +101,7 @@ class GotWpLoginRegister {
 		}
 		
 		/* change the script tag by adding 'async defer' and return it. */
-		$tag = '<script id="'. $handle .'" src="'. esc_url( $src ) .'" async defer></script>';
+		$tag = '<script id="' . $handle . '" src="' . esc_url( $src ) . '" async defer></script>';
 		
 		return $tag;
 	}
