@@ -24,10 +24,10 @@ class GotWpLoginRegister {
 		/* Load menu */
 		add_action('admin_menu', array($this, 'menu'));
 		
-		/* Internationalization */
-		add_action('init', array($this, 'i18n'));
+		/* Plugin init */
+		add_action('init', array($this, 'pluginInit'));
 		
-		/* Add plugin overrides */
+		/* Plugin overrides */
 		add_action('plugins_loaded', array($this, 'pluginLoaded'));
 
 		/* Load frontend styles and scripts */
@@ -51,6 +51,11 @@ class GotWpLoginRegister {
 	public function i18n()
 	{
 		load_plugin_textdomain('got-wp-lr', false, dirname(plugin_basename(__FILE__)).'/languages/');
+	}
+	
+	public function pluginInit()
+	{
+		
 	}
 	
 	public function pluginLoaded()
