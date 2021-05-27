@@ -15,8 +15,15 @@ if (!defined('ABSPATH')) exit;
 
 class GotWpLoginRegister {
 	
+	private $clientId;
+	
+	private $clientSecret;
+	
 	public function __construct()
 	{
+		
+		$this->clientId = $this->getOption('client_id');
+		$this->clientSecret = $this->getOption('client_secret');
 		
 		/* Load constants */
 		$this->constants();
@@ -103,7 +110,7 @@ class GotWpLoginRegister {
 		$loginUri = add_query_arg(['gotwplr_call' => 1], $currentUrl);
 		
 		$prompt = '<div id="g_id_onload"
-		data-client_id="'. $this->getOption('client_id') .'"
+		data-client_id="'. $this->clientId .'"
 		data-context="'. $this->getOption('ot_context') .'"
 		data-ux_mode="'. $this->getOption('ot_ux_mode') .'"
 		data-login_uri="'. $loginUri .'"
@@ -112,6 +119,52 @@ class GotWpLoginRegister {
 		</div>';
 		
 		echo $prompt;
+	}
+	
+	private function auth()
+	{
+		
+		$redirectTo = $this->getCurrentUrl();
+		
+		$errors = new WP_Error();
+		
+		if (isset($_GET['gotwplr_call']) && $_GET['gotwplr_call']) {
+			
+			/* Check if there is CSRF token in Cookie */
+			if (!isset($_COOKIE['g_csrf_token']) || empty($_COOKIE['g_csrf_token']))
+				return;
+			
+			/* Check if there is CSRF token in post body */
+			if (!isset($_POST['g_csrf_token']) || empty($_POST['g_csrf_token']))
+				return;
+			
+			/* Verify double submit cookie */
+			if ($_POST['g_csrf_token'] !== $_COOKIE['g_csrf_token'])
+				return;
+			
+			/* Check the received ID token */
+			if (!isset($_POST['credential']) || empty($_POST['credential']))
+				return;
+			
+			require_once 'vendor/autoload.php';
+			
+			$client = new Google_Client(['client_id' => $this->clientId]);
+			
+			$idToken = $_POST['credential'];
+			
+			/* Verify the JWT signature, the 'aud' claim, the 'exp' claim, and the 'iss' claim */
+			$payload = $client->verifyIdToken($idToken);
+			
+			if ($payload) {
+				$userid = $payload['sub'];
+				// If request specified a G Suite domain:
+				//$domain = $payload['hd'];
+			} else {
+				// Invalid ID token
+			}
+
+		}
+		
 	}
 	
 	public function getCurrentUrl()
