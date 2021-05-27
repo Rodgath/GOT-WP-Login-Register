@@ -43,8 +43,12 @@ $options[] = array(
 			'id'    => 'ot_auto_select',
 			'name'  => __('Auto Select:', 'dilaz-panel'),
 			'desc'  => __('This attribute determines whether or not to return an ID token automatically, without any user interaction, if only one Google session has approved your app.', 'dilaz-panel'),
-			'type'  => 'checkbox',
-			'std'   => false,
+			'type' => 'switch',
+			'options' => array(
+				1 => __('Yes', 'dilaz-panel'), 
+				0 => __('No', 'dilaz-panel'),
+			),
+			'std'  => 0,
 			'class' => ''
 		);
 		$options[] = array(
