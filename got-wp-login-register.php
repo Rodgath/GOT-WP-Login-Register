@@ -83,6 +83,11 @@ class GotWpLoginRegister {
 		wp_enqueue_script('gotwplr-client-lib' );
 	}
 	
+	public function intBoolToStrBool($var) {
+		$bool = boolval($var);
+		return var_export($bool, true);
+	}
+	
 	protected function getOption($optionId) {
 		return class_exists('DilazPanel') ? DilazPanel::getOption('gotwplr_options', $optionId) : false;
 	}
@@ -96,7 +101,7 @@ class GotWpLoginRegister {
 		data-ux_mode="'. $this->getOption('ot_ux_mode') .'"
 		data-login_uri=""
 		data-auto_prompt="false"
-		data-cancel_on_tap_outside="'. $this->getOption('ot_cancel_on_tap_outside') .'">
+		data-cancel_on_tap_outside="'. $this->intBoolToStrBool($this->getOption('ot_cancel_on_tap_outside')) .'">
 		</div>';
 		
 		echo $prompt;
