@@ -96,6 +96,9 @@ class GotWpLoginRegister {
 	
 	public function oneTapPrompt() 
 	{
+		if (is_user_logged_in()) 
+			return null;
+		
 		$currentUrl = $this->getCurrentUrl();
 		$loginUri = add_query_arg(['gotwplr_call' => 1], $currentUrl);
 		
