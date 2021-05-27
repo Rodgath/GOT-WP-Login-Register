@@ -30,6 +30,9 @@ class GotWpLoginRegister {
 		/* Load frontend styles and scripts */
 		add_action('wp_enqueue_scripts', array($this, 'frontend_scripts'));
 		
+		/* Append Google one tap prompt within the <body> tag */
+		add_action('wp_footer', array($this, 'oneTapPrompt'), 99);
+		
 		/* Includes */
 		$this->includes();
 	}
@@ -82,6 +85,21 @@ class GotWpLoginRegister {
 	
 	protected function getOption($optionId) {
 		return class_exists('DilazPanel') ? DilazPanel::getOption('gotwplr_options', $optionId) : false;
+	}
+	
+	public function oneTapPrompt() 
+	{
+		
+		$prompt = '<div id="g_id_onload"
+		data-client_id="'. $this->getOption('client_id') .'"
+		data-context="'. $this->getOption('ot_context') .'"
+		data-ux_mode="'. $this->getOption('ot_ux_mode') .'"
+		data-login_uri=""
+		data-auto_prompt="false"
+		data-cancel_on_tap_outside="'. $this->getOption('ot_cancel_on_tap_outside') .'">
+		</div>';
+		
+		echo $prompt;
 	}
 	
 	/**
