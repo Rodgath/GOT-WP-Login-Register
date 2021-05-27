@@ -19,11 +19,14 @@ class GotWpLoginRegister {
 	
 	private $clientSecret;
 	
+	private $googleClient;
+	
 	public function __construct()
 	{
 		
 		$this->clientId = $this->getOption('client_id');
 		$this->clientSecret = $this->getOption('client_secret');
+		$this->googleClient = $this->getGoogleClient();
 		
 		/* Load constants */
 		$this->constants();
@@ -146,11 +149,9 @@ class GotWpLoginRegister {
 			if (!isset($_POST['credential']) || empty($_POST['credential']))
 				return;
 			
-			require_once 'vendor/autoload.php';
-			
-			$client = new Google_Client(['client_id' => $this->clientId]);
-			
 			$idToken = $_POST['credential'];
+			
+			$client = $this->getGoogleClient();
 			
 			/* Verify the JWT signature, the 'aud' claim, the 'exp' claim, and the 'iss' claim */
 			$payload = $client->verifyIdToken($idToken);
@@ -165,6 +166,19 @@ class GotWpLoginRegister {
 
 		}
 		
+	}
+	
+	private function getGoogleClient() 
+	{
+		require_once GOTWPLR_DIR . '/vendor/autoload.php';
+		
+		$client = new Google_Client(apply_filters('gotwplr_client_vonfig'), array());
+		
+		$client->setClientId($this->clientId);
+		$client->setClientSecret($this->clientSecret);
+		$client->setRedirectUri($this->getCurrentUrl());
+		
+		return $client;
 	}
 	
 	public function getCurrentUrl()
