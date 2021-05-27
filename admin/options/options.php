@@ -52,6 +52,18 @@ $options[] = array(
 			'class' => ''
 		);
 		$options[] = array(
+			'id'    => 'ot_cancel_on_tap_outside',
+			'name'  => __('Cancel on tap outside:', 'dilaz-panel'),
+			'desc'  => __('This attribute sets whether or not to cancel the One Tap request if the user clicks outside of the prompt.', 'dilaz-panel'),
+			'type' => 'switch',
+			'options' => array(
+				1 => __('Yes', 'dilaz-panel'), 
+				0 => __('No', 'dilaz-panel'),
+			),
+			'std'  => 0,
+			'class' => ''
+		);
+		$options[] = array(
 			'id'   => 'ot_context',
 			'name' => __('Context:', 'dilaz-panel'),
 			'desc' => __('This attribute changes the text of the title and messages shown in the One Tap prompt.', 'dilaz-panel'),
