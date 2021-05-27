@@ -35,6 +35,7 @@ class GotWpLoginRegister {
 		
 		/* Includes */
 		$this->includes();
+		
 	}
 	
 	private function constants()
@@ -83,7 +84,8 @@ class GotWpLoginRegister {
 		wp_enqueue_script('gotwplr-client-lib' );
 	}
 	
-	public function intBoolToStrBool($var) {
+	public function intBoolToStrBool($var)
+	{
 		$bool = boolval($var);
 		return var_export($bool, true);
 	}
@@ -94,17 +96,24 @@ class GotWpLoginRegister {
 	
 	public function oneTapPrompt() 
 	{
+		$currentUrl = $this->getCurrentUrl();
+		$loginUri = add_query_arg(['gotwplr_call' => 1], $currentUrl);
 		
 		$prompt = '<div id="g_id_onload"
 		data-client_id="'. $this->getOption('client_id') .'"
 		data-context="'. $this->getOption('ot_context') .'"
 		data-ux_mode="'. $this->getOption('ot_ux_mode') .'"
-		data-login_uri=""
+		data-login_uri="'. $loginUri .'"
 		data-auto_prompt="false"
 		data-cancel_on_tap_outside="'. $this->intBoolToStrBool($this->getOption('ot_cancel_on_tap_outside')) .'">
 		</div>';
 		
 		echo $prompt;
+	}
+	
+	public function getCurrentUrl()
+	{
+		return (is_ssl() ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 	}
 	
 	/**
