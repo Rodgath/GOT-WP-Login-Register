@@ -24,10 +24,6 @@ class GotWpLoginRegister {
 	public function __construct()
 	{
 		
-		$this->clientId = $this->getOption('client_id');
-		$this->clientSecret = $this->getOption('client_secret');
-		$this->googleClient = $this->getGoogleClient();
-		
 		/* Load constants */
 		$this->constants();
 		
@@ -46,6 +42,9 @@ class GotWpLoginRegister {
 		/* Includes */
 		$this->includes();
 		
+		$this->clientId = $this->getOption('client_id');
+		$this->clientSecret = $this->getOption('client_secret');
+		$this->googleClient = $this->getGoogleClient();
 	}
 	
 	private function constants()
@@ -70,6 +69,9 @@ class GotWpLoginRegister {
 	{
 		/* Internationalization */
 		$this->i18n();
+		
+		/* Run login endpoint */
+		$this->auth();
 	}
 	
 	public function pluginLoaded()
@@ -106,8 +108,8 @@ class GotWpLoginRegister {
 	
 	public function oneTapPrompt() 
 	{
-		if (is_user_logged_in()) 
-			return null;
+		// if (is_user_logged_in()) 
+			// return null;
 		
 		$currentUrl = $this->getCurrentUrl();
 		$loginUri = add_query_arg(['gotwplr_call' => 1], $currentUrl);
@@ -130,6 +132,18 @@ class GotWpLoginRegister {
 		$redirectTo = $this->getCurrentUrl();
 		
 		$errors = new WP_Error();
+		
+			$url = 'https://oauth2.googleapis.com/tokeninfo';
+			$curlPost = 'id_token=' . $_POST['credential'] . '';
+			$ch = curl_init();		
+			curl_setopt($ch, CURLOPT_URL, $url);		
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);		
+			curl_setopt($ch, CURLOPT_POST, 1);		
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $curlPost);	
+			$data = json_decode(curl_exec($ch), true);
+			$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);	
+			var_dump($http_code, true);	
 		
 		if (isset($_GET['gotwplr_call']) && $_GET['gotwplr_call']) {
 			
@@ -172,7 +186,7 @@ class GotWpLoginRegister {
 	{
 		require_once GOTWPLR_DIR . '/vendor/autoload.php';
 		
-		$client = new Google_Client(apply_filters('gotwplr_client_vonfig'), array());
+		$client = new Google_Client(apply_filters('gotwplr_client_vonfig', array()));
 		
 		$client->setClientId($this->clientId);
 		$client->setClientSecret($this->clientSecret);
