@@ -207,6 +207,7 @@ class GotWpLoginRegister {
 		/* Create the Google client object */
 		$client = new Google_Client(apply_filters('gotwplr_client_config', array()));
 		
+		$client->setApplicationName('Google One Tap WP');
 		$client->setClientId($this->clientId);
 		$client->setClientSecret($this->clientSecret);
 		$client->setRedirectUri($this->getCurrentUrl());
