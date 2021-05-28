@@ -164,10 +164,8 @@ class GotWpLoginRegister {
 				$userEmail = sanitize_email($payload['email']);
 				if (is_email($userEmail)) {
 					if (email_exists($userEmail)) {
-						/* Login user  */
-						
+						$this->signInUser($userEmail);
 					} else {
-						/* Signup user */
 						$this->signUpUser($payload);
 					}
 				}
@@ -178,6 +176,26 @@ class GotWpLoginRegister {
 
 		}
 		
+	}
+	
+	public function signInUser($userEmail)
+	{
+		$user = get_user_by('email', $userEmail);
+		
+		if (!is_wp_error($user)) {
+			
+			/* Remove all cookies */
+			wp_clear_auth_cookie();
+			
+			/* Set the WP login cookie */
+			$secureCookie = is_ssl() ? true : false;
+			wp_set_auth_cookie($user->ID, true, $secureCookie);
+			
+			/* Sett the current user object */
+			wp_set_current_user($user->ID);
+			
+			do_action(GOTWPLR_PREFIX .'after_user_signin', $userId);
+		}
 	}
 	
 	public function signUpUser($payload)
