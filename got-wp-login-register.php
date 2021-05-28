@@ -153,12 +153,9 @@ class GotWpLoginRegister {
 			
 			$idToken = $_POST['credential'];
 			
-			var_dump($idToken);
+			/* get the payload */
+			$payload = $this->getPayload($idToken);
 			
-			$client = $this->getGoogleClient();
-			
-			/* Verify the JWT signature, the 'aud' claim, the 'exp' claim, and the 'iss' claim */
-			$payload = $client->verifyIdToken($idToken);
 			var_dump($payload);
 			if ($payload) {
 				$userid = $payload['sub'];
@@ -172,10 +169,42 @@ class GotWpLoginRegister {
 		
 	}
 	
+	private function getPayload($idToken)
+	{
+		
+		$client = $this->googleClient;
+		
+		/* Create the JWT service and set leeway property
+		/* Fixes leeway issue with JWT token */
+		/* @see - https://github.com/googleapis/google-api-php-client/issues/1630 */
+		$jwt = new \Firebase\JWT\JWT;
+		$jwt::$leeway = 5;
+		
+		do {
+			$attempt = 0;
+			
+			try {
+				
+				/* Verify the JWT signature, the 'aud' claim, the 'exp' claim, and the 'iss' claim */
+				$payload = $client->verifyIdToken($idToken);
+				
+				$retry = false;
+				
+			} catch (Firebase\JWT\BeforeValidException $e) {
+				$attempt++;
+				$retry = $attempt < 2;
+			}
+			
+		} while ($retry);
+		
+		return $payload;
+	}
+	
 	private function getGoogleClient() 
 	{
 		require_once GOTWPLR_DIR . '/vendor/autoload.php';
 		
+		/* Create the Google client object */
 		$client = new Google_Client();
 		
 		$client->setClientId($this->clientId);
