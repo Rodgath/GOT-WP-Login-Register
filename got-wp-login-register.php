@@ -161,12 +161,66 @@ class GotWpLoginRegister {
 				$userid = $payload['sub'];
 				// If request specified a G Suite domain:
 				//$domain = $payload['hd'];
+				$userEmail = sanitize_email($payload['email']);
+				if (is_email($userEmail)) {
+					if (email_exists($userEmail)) {
+						/* Login user  */
+						
+					} else {
+						/* Signup user */
+						$this->signUpUser($payload);
+					}
+				}
+				
 			} else {
 				// Invalid ID token
 			}
 
 		}
 		
+	}
+	
+	public function signUpUser($payload)
+	{
+		
+		$userEmail = sanitize_email($payload['email']);
+		
+		/* Create username from email first part and then add 6 random characters after */
+		$userName = strstr($userEmail, '@', true).substr(uniqid('', true), -6);
+		
+		$userPass = wp_generate_password(12, false);
+		
+		while (username_exists($userName)) {
+			$userName = strstr($userEmail, '@', true).substr(uniqid('', true), -6);
+		}
+		
+		$userId = wp_create_user($userName, $userPass, $userEmail);
+		
+		if ($userId) {
+			
+			wp_update_user(
+				array(
+					'ID' => $userId,
+					'display_name' => sanitize_text_field($payload['name'])
+				)
+			);
+			
+			update_user_meta($userId, 'first_name', ucfirst(sanitize_text_field($payload['given_name'])));
+			update_user_meta($userId, 'last_name', ucfirst(sanitize_text_field($payload['family_name'])));
+			update_user_meta($userId, 'nickname', sanitize_text_field($payload['given_name']));
+			
+			/* Remove all cookies */
+			wp_clear_auth_cookie();
+			
+			/* Set the WP login cookie */
+			$secureCookie = is_ssl() ? true : false;
+			wp_set_auth_cookie($userId, true, $secureCookie);
+			
+			/* Sett the current user object */
+			wp_set_current_user($userId);
+			
+			do_action(GOTWPLR_PREFIX .'after_user_signup', $userId);
+		}
 	}
 	
 	private function getPayload($idToken)
