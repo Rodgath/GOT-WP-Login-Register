@@ -118,8 +118,8 @@ class GotWpLoginRegister {
 		data-client_id="'. $this->clientId .'"
 		data-context="'. $this->getOption('ot_context') .'"
 		data-ux_mode="'. $this->getOption('ot_ux_mode') .'"
+		data-auto_select="'. $this->intBoolToStrBool($this->getOption('ot_auto_select')) .'"
 		data-login_uri="'. $loginUri .'"
-		data-auto_prompt="false"
 		data-cancel_on_tap_outside="'. $this->intBoolToStrBool($this->getOption('ot_cancel_on_tap_outside')) .'">
 		</div>';
 		
@@ -132,18 +132,6 @@ class GotWpLoginRegister {
 		$redirectTo = $this->getCurrentUrl();
 		
 		$errors = new WP_Error();
-		
-			$url = 'https://oauth2.googleapis.com/tokeninfo';
-			$curlPost = 'id_token=' . $_POST['credential'] . '';
-			$ch = curl_init();		
-			curl_setopt($ch, CURLOPT_URL, $url);		
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);		
-			curl_setopt($ch, CURLOPT_POST, 1);		
-			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $curlPost);	
-			$data = json_decode(curl_exec($ch), true);
-			$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);	
-			var_dump($http_code, true);	
 		
 		if (isset($_GET['gotwplr_call']) && $_GET['gotwplr_call']) {
 			
@@ -165,11 +153,13 @@ class GotWpLoginRegister {
 			
 			$idToken = $_POST['credential'];
 			
+			var_dump($idToken);
+			
 			$client = $this->getGoogleClient();
 			
 			/* Verify the JWT signature, the 'aud' claim, the 'exp' claim, and the 'iss' claim */
 			$payload = $client->verifyIdToken($idToken);
-			
+			var_dump($payload);
 			if ($payload) {
 				$userid = $payload['sub'];
 				// If request specified a G Suite domain:
@@ -186,7 +176,7 @@ class GotWpLoginRegister {
 	{
 		require_once GOTWPLR_DIR . '/vendor/autoload.php';
 		
-		$client = new Google_Client(apply_filters('gotwplr_client_vonfig', array()));
+		$client = new Google_Client();
 		
 		$client->setClientId($this->clientId);
 		$client->setClientSecret($this->clientSecret);
