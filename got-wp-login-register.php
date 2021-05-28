@@ -205,7 +205,7 @@ class GotWpLoginRegister {
 		require_once GOTWPLR_DIR . '/vendor/autoload.php';
 		
 		/* Create the Google client object */
-		$client = new Google_Client();
+		$client = new Google_Client(apply_filters('gotwplr_client_config', array()));
 		
 		$client->setClientId($this->clientId);
 		$client->setClientSecret($this->clientSecret);
