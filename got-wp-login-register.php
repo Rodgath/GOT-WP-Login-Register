@@ -182,19 +182,11 @@ class GotWpLoginRegister {
 	{
 		$user = get_user_by('email', $userEmail);
 		
-		if (!is_wp_error($user)) {
+		if ( !is_wp_error($user) ) {
 			
-			/* Remove all cookies */
-			wp_clear_auth_cookie();
+			$this->manageWpUserAuthentication($user->ID);
 			
-			/* Set the WP login cookie */
-			$secureCookie = is_ssl() ? true : false;
-			wp_set_auth_cookie($user->ID, true, $secureCookie);
-			
-			/* Sett the current user object */
-			wp_set_current_user($user->ID);
-			
-			do_action(GOTWPLR_PREFIX .'after_user_signin', $userId);
+			do_action(GOTWPLR_PREFIX .'after_user_signin', $user->ID);
 		}
 	}
 	
@@ -227,18 +219,23 @@ class GotWpLoginRegister {
 			update_user_meta($userId, 'last_name', ucfirst(sanitize_text_field($payload['family_name'])));
 			update_user_meta($userId, 'nickname', sanitize_text_field($payload['given_name']));
 			
-			/* Remove all cookies */
-			wp_clear_auth_cookie();
-			
-			/* Set the WP login cookie */
-			$secureCookie = is_ssl() ? true : false;
-			wp_set_auth_cookie($userId, true, $secureCookie);
-			
-			/* Sett the current user object */
-			wp_set_current_user($userId);
+			$this->manageWpUserAuthentication($userId);
 			
 			do_action(GOTWPLR_PREFIX .'after_user_signup', $userId);
 		}
+	}
+	
+	protected function manageWpUserAuthentication($userId) 
+	{
+		/* Remove all cookies */
+		wp_clear_auth_cookie();
+		
+		/* Set the WP login cookie */
+		$secureCookie = is_ssl() ? true : false;
+		wp_set_auth_cookie($userId, true, $secureCookie);
+		
+		/* Sett the current user object */
+		wp_set_current_user($userId);
 	}
 	
 	public function generateUsername($userEmail)
