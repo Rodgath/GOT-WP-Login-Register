@@ -195,12 +195,7 @@ class GotWpLoginRegister {
 		
 		$userEmail = sanitize_email($payload['email']);
 		
-		/* Create username from email first part and then add 6 random characters after */
 		$userName = $this->generateUsername($userEmail);
-		
-		while (username_exists($userName)) {
-			$userName = $this->generateUsername($userEmail);
-		}
 		
 		$userPass = wp_generate_password(12, false);
 		
@@ -240,7 +235,15 @@ class GotWpLoginRegister {
 	
 	public function generateUsername($userEmail)
 	{
-		return strstr($userEmail, '@', true).substr(uniqid('', true), -6);
+		
+		/* Create username from email first part and then add 4 random characters after */
+		$userName = strstr($userEmail, '@', true).substr(uniqid('', true), -4);
+		
+		while (username_exists($userName)) {
+			$userName = call_user_func([__CLASS__, 'generateUsername'], $userEmail);
+		}
+		
+		return $userName;
 	}
 	
 	private function getPayload($idToken)
