@@ -134,7 +134,15 @@ class GotWpLoginRegister {
 		$currentUrl = $this->getCurrentUrl();
 		$loginUri = add_query_arg(['gotwplr_call' => 1], $currentUrl);
 		
-		$button = '<div class="g_id_signin"
+		$button = '<div id="g_id_onload"
+		data-client_id="'. $this->clientId .'"
+		data-context="'. $this->getOption('ot_context') .'"
+		data-ux_mode="'. $this->getOption('ot_ux_mode') .'"
+		data-login_uri="'. $loginUri .'"
+		data-auto_prompt="false">
+		</div>
+
+		<div class="g_id_signin"
 		data-type="'. $this->getOption('si_type') .'"
 		data-theme="'. $this->getOption('si_theme') .'"
 		data-size="'. $this->getOption('si_size') .'"
