@@ -16,7 +16,7 @@ $options[] = array(
 		$options[] = array(
 			'id'    => 'client_id',
 			'name'  => __('Client Id:', 'dilaz-panel'),
-			'desc2'  => __('Google API client ID. Example: <code>CLIENT_ID.apps.googleusercontent.com</code>. <a href="https://console.developers.google.com/apis/dashboard">Click here to create your own client Id</a>', 'dilaz-panel'),
+			'desc2'  => __('Google API client ID. <br />Example: <code>1234567890-abc123def456.apps.googleusercontent.com</code>. <br /> <a href="https://console.developers.google.com/apis/dashboard">Click here to create your own client Id</a>', 'dilaz-panel'),
 			'type'  => 'text',
 			'std'   => '',
 			'class' => ''
@@ -166,6 +166,34 @@ $options[] = array(
 			'class' => ''
 		);
 		$options[] = array(
+			'id'    => 'si_additional_width',
+			'name'  => __('Add additional width:', 'dilaz-panel'),
+			'desc'  => __('This attribute sets whether or not to cancel the One Tap request if the user clicks outside of the prompt.', 'dilaz-panel'),
+			'type' => 'switch',
+			'options' => array(
+				1 => __('Yes', 'dilaz-panel'), 
+				0 => __('No', 'dilaz-panel'),
+			),
+			'std'  => 0,
+			'class' => '',
+			'req_args' => array(
+				'si_type' => 'standard'
+			),
+			'req_action' => 'show'
+		);
+		$options[] = array(
+			'id'    => 'si_width',
+			'name'  => __('Button Width:', 'dilaz-panel'),
+			'desc2'  => __('The minimum button width, in pixels. The maximum width available is 400 pixels.', 'dilaz-panel'),
+			'type'  => 'text',
+			'std'   => '',
+			'class' => '',
+			'req_args' => array(
+				'si_additional_width' => 1
+			),
+			'req_action' => 'show'
+		);
+		$options[] = array(
 			'id'   => 'si_logo_alignment',
 			'name' => __('Button Logo Alignment:', 'dilaz-panel'),
 			// 'desc' => __('Images used as radio option fields.', 'dilaz-panel'),
@@ -175,14 +203,9 @@ $options[] = array(
 				'center'  => array('src' => $parameters['dir_url'] .'assets/images/google/si_logo_center.png', 'alt' => 'Center-aligned')
 			),
 			'std'   => 'left',
-			'class' => ''
+			'class' => '',
+			'req_args' => array(
+				'si_additional_width' => 1
+			),
+			'req_action' => 'show'
 		);
-		$options[] = array(
-			'id'    => 'si_width',
-			'name'  => __('Button Width:', 'dilaz-panel'),
-			'desc2'  => __('The minimum button width, in pixels. The maximum width available is 400 pixels.', 'dilaz-panel'),
-			'type'  => 'text',
-			'std'   => '',
-			'class' => ''
-		);
-		
