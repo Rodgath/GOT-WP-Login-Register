@@ -43,7 +43,7 @@ class GotWpLoginRegister {
 		add_action('login_enqueue_scripts', array($this, 'admin_scripts'));
 		
 		/* Append Google Signin button to WordPress login form */
-		add_action('login_form', array($this, 'googleSignInButton')) ;
+		add_filter('login_form', array($this, 'googleSignInButton')) ;
 		
 		/* Includes */
 		$this->includes();
@@ -141,27 +141,36 @@ class GotWpLoginRegister {
 		$currentUrl = $this->getCurrentUrl();
 		$loginUri = add_query_arg(['gotwplr_call' => 1], $currentUrl);
 		
-		$button = '<div id="g_id_onload"
+		$button = '<div style="width: max-content; marign: 0 auto;">';
+			$button .= $this->signInButtonMarkup();
+		$button .= '</div>';
+		
+		echo $button;
+	}
+	
+	public function signInButtonMarkup() 
+	{
+		$markup = '<div id="g_id_onload"
 		data-client_id="'. $this->clientId .'"
 		data-context="'. $this->getOption('ot_context') .'"
 		data-ux_mode="'. $this->getOption('ot_ux_mode') .'"
 		data-login_uri="'. $loginUri .'"
 		data-auto_prompt="false">
-		</div>
+		</div>';
 
-		<div class="g_id_signin"
+		$markup .= '<div class="g_id_signin"
 		data-type="'. $this->getOption('si_type') .'"
 		data-theme="'. $this->getOption('si_theme') .'"
 		data-size="'. $this->getOption('si_size') .'"
 		data-text="'. $this->getOption('si_text') .'" 
 		data-shape="'. $this->getOption('si_shape') .'"';
 		if ($this->getOption('si_additional_width')) {
-		$button .= 'data-logo_alignment="'. $this->getOption('si_logo_alignment') .'"
-		data-width="'. $this->getOption('si_width') .'">';
+		$markup .= 'data-logo_alignment="'. $this->getOption('si_logo_alignment') .'"
+		data-width="'. $this->getOption('si_width') .'"';
 		}
-		$button .= '</div>';
+		$markup .= '></div>';
 		
-		echo $button;
+		return $markup;
 	}
 	
 	private function auth()
