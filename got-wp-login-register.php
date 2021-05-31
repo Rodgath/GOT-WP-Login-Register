@@ -11,7 +11,7 @@ Author URI: https://github.com/Rodgath
 */
 
 // Exit if accessed directly
-if (!defined('ABSPATH')) exit;
+defined('ABSPATH') || exit;
 
 class GotWpLoginRegister {
 	
@@ -108,8 +108,8 @@ class GotWpLoginRegister {
 	
 	public function oneTapPrompt() 
 	{
-		// if (is_user_logged_in()) 
-			// return null;
+		if (is_user_logged_in()) 
+			return null;
 		
 		$currentUrl = $this->getCurrentUrl();
 		$loginUri = add_query_arg(['gotwplr_call' => 1], $currentUrl);
@@ -124,6 +124,27 @@ class GotWpLoginRegister {
 		</div>';
 		
 		echo $prompt;
+	}
+	
+	public function googleSignInButton() 
+	{
+		if (is_user_logged_in()) 
+			return null;
+		
+		$currentUrl = $this->getCurrentUrl();
+		$loginUri = add_query_arg(['gotwplr_call' => 1], $currentUrl);
+		
+		$button = '<div class="g_id_signin"
+		data-type="'. $this->getOption('si_type') .'"
+		data-theme="'. $this->getOption('si_theme') .'"
+		data-size="'. $this->getOption('si_size') .'"
+		data-text="'. $this->getOption('si_text') .'" 
+		data-shape="'. $this->getOption('si_shape') .'"
+		data-logo_alignment="'. $this->getOption('si_logo_alignment') .'"
+		data-width="'. $this->getOption('si_width') .'">
+		</div>';
+		
+		echo $button;
 	}
 	
 	private function auth()
@@ -156,9 +177,9 @@ class GotWpLoginRegister {
 			/* get the payload */
 			$payload = $this->getPayload($idToken);
 			
-			var_dump($payload);
+			// var_dump($payload);
 			if ($payload) {
-				$userid = $payload['sub'];
+				// $userid = $payload['sub'];
 				// If request specified a G Suite domain:
 				//$domain = $payload['hd'];
 				$userEmail = sanitize_email($payload['email']);
