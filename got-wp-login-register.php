@@ -39,6 +39,9 @@ class GotWpLoginRegister {
 		/* Append Google one tap prompt within the <body> tag */
 		add_action('wp_footer', array($this, 'oneTapPrompt'), 99);
 		
+		/* Load backend styles and scripts */
+		add_action('login_enqueue_scripts', array($this, 'admin_scripts'));
+		
 		/* Includes */
 		$this->includes();
 		
@@ -87,7 +90,8 @@ class GotWpLoginRegister {
 	
 	public function admin_scripts()
 	{
-		
+		wp_register_script('gotwplr-client-lib-login', 'https://accounts.google.com/gsi/client', array(), false, false);
+		wp_enqueue_script('gotwplr-client-lib-login' );
 	}
 	
 	public function frontend_scripts()
