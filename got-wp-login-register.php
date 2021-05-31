@@ -141,12 +141,24 @@ class GotWpLoginRegister {
 	{
 		if (is_user_logged_in()) 
 			return null;
-		
-		$button = '<div style="width: max-content; margin: 0 auto 20px;">';
+		$button = '';
+		$button .= '<div style="width: max-content; margin: 0 auto 20px;">';
 			$button .= $this->signInButtonMarkup();
 		$button .= '</div>';
 		
 		echo $button;
+	}
+	
+	public function orSeparator()
+	{
+		return '<p style="width: 100%;
+			margin-bottom: 30px; margin-top: 30px;
+text-align: center;
+border-bottom: 1px solid #e0e0e0;
+line-height: .1em;
+font-weight: bold;"><span style="padding: 0 10px;
+background: #fff;
+color: #606060;">OR</span></p>';
 	}
 	
 	public function signInButtonMarkup() 
