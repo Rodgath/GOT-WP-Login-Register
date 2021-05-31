@@ -42,6 +42,9 @@ class GotWpLoginRegister {
 		/* Load backend styles and scripts */
 		add_action('login_enqueue_scripts', array($this, 'admin_scripts'));
 		
+		/* Append Google Signin button to WordPress login form */
+		add_action('login_form', array($this, 'googleSignInButton')) ;
+		
 		/* Includes */
 		$this->includes();
 		
