@@ -147,10 +147,12 @@ class GotWpLoginRegister {
 		data-theme="'. $this->getOption('si_theme') .'"
 		data-size="'. $this->getOption('si_size') .'"
 		data-text="'. $this->getOption('si_text') .'" 
-		data-shape="'. $this->getOption('si_shape') .'"
-		data-logo_alignment="'. $this->getOption('si_logo_alignment') .'"
-		data-width="'. $this->getOption('si_width') .'">
-		</div>';
+		data-shape="'. $this->getOption('si_shape') .'"';
+		if ($this->getOption('si_additional_width')) {
+		$button .= 'data-logo_alignment="'. $this->getOption('si_logo_alignment') .'"
+		data-width="'. $this->getOption('si_width') .'">';
+		}
+		$button .= '</div>';
 		
 		echo $button;
 	}
