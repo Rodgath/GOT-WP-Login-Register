@@ -40,7 +40,7 @@ class GotWpLoginRegister {
 		add_action('wp_footer', array($this, 'oneTapPrompt'), 99);
 		
 		/* Load backend styles and scripts */
-		add_action('login_enqueue_scripts', array($this, 'admin_scripts'));
+		add_action('login_enqueue_scripts', array($this, 'login_scripts'));
 		
 		/* Append Google Signin button to WordPress login form */
 		add_filter('login_form', array($this, 'googleSignInButton')) ;
@@ -91,7 +91,7 @@ class GotWpLoginRegister {
 		
 	}
 	
-	public function admin_scripts()
+	public function login_scripts()
 	{
 		wp_register_script('gotwplr-client-lib-login', 'https://accounts.google.com/gsi/client', array(), false, false);
 		wp_enqueue_script('gotwplr-client-lib-login' );
