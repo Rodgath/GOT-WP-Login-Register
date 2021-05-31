@@ -43,7 +43,7 @@ class GotWpLoginRegister {
 		add_action('login_enqueue_scripts', array($this, 'login_scripts'));
 		
 		/* Append Google Signin button to WordPress login form */
-		add_filter('login_form', array($this, 'googleSignInButton')) ;
+		add_filter('login_form', array($this, 'googleSignInButton'));
 		
 		/* Includes */
 		$this->includes();
@@ -94,6 +94,8 @@ class GotWpLoginRegister {
 	public function login_scripts()
 	{
 		$this->gClientLibrary();
+		wp_register_script('gotwplr-js-login', GOTWPLR_ASSETS .'js/login.js', array('jquery'), null, true);
+		wp_enqueue_script('gotwplr-js-login');
 	}
 	
 	public function frontend_scripts()
@@ -104,7 +106,7 @@ class GotWpLoginRegister {
 	public function gClientLibrary()
 	{
 		wp_register_script('gotwplr-client-lib', 'https://accounts.google.com/gsi/client', array(), false, false);
-		wp_enqueue_script('gotwplr-client-lib' );
+		wp_enqueue_script('gotwplr-client-lib');
 	}
 	
 	public function intBoolToStrBool($var)
@@ -137,13 +139,26 @@ class GotWpLoginRegister {
 		echo $prompt;
 	}
 	
-	public function googleSignInButton() 
+	public function googleSignInButton()
 	{
 		if (is_user_logged_in()) 
 			return null;
+		
+		$buttonPos = $this->getOption('si_button_position');
+		
+		$positionClass = $buttonPos;
+		
 		$button = '';
-		$button .= '<div style="width: max-content; margin: 0 auto 20px;">';
-			$button .= $this->signInButtonMarkup();
+		$button .= '<div id="gotwplr-signin-btn" class="' . $positionClass . '" style="display:none">';
+			if ($buttonPos == 'form_bottom') {
+			$button .= $this->orSeparator();
+			}
+			$button .= '<div style="width: max-content; margin: 0 auto 20px;">';
+				$button .= $this->signInButtonMarkup();
+			$button .= '</div>';
+			if ($buttonPos == 'form_top') {
+			$button .= $this->orSeparator();
+			}
 		$button .= '</div>';
 		
 		echo $button;
@@ -151,17 +166,10 @@ class GotWpLoginRegister {
 	
 	public function orSeparator()
 	{
-		return '<p style="width: 100%;
-			margin-bottom: 30px; margin-top: 30px;
-text-align: center;
-border-bottom: 1px solid #e0e0e0;
-line-height: .1em;
-font-weight: bold;"><span style="padding: 0 10px;
-background: #fff;
-color: #606060;">OR</span></p>';
+		return '<p style="width: 100%; margin-bottom: 30px; margin-top: 30px; text-align: center; border-bottom: 1px solid #e0e0e0; line-height: .1em; font-weight: bold;"><span style="padding: 0 10px; background: #fff; color: #606060;">OR</span></p>';
 	}
 	
-	public function signInButtonMarkup() 
+	public function signInButtonMarkup()
 	{
 		
 		$currentUrl = $this->getCurrentUrl();
