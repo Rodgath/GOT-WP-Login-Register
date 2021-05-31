@@ -39,7 +39,7 @@ class GotWpLoginRegister {
 		/* Append Google one tap prompt within the <body> tag */
 		add_action('wp_footer', array($this, 'oneTapPrompt'), 99);
 		
-		/* Load backend styles and scripts */
+		/* Load login styles and scripts */
 		add_action('login_enqueue_scripts', array($this, 'login_scripts'));
 		
 		/* Append Google Signin button to WordPress login form */
@@ -138,10 +138,7 @@ class GotWpLoginRegister {
 		if (is_user_logged_in()) 
 			return null;
 		
-		$currentUrl = $this->getCurrentUrl();
-		$loginUri = add_query_arg(['gotwplr_call' => 1], $currentUrl);
-		
-		$button = '<div style="width: max-content; marign: 0 auto;">';
+		$button = '<div style="width: max-content; margin: 0 auto;">';
 			$button .= $this->signInButtonMarkup();
 		$button .= '</div>';
 		
@@ -150,6 +147,10 @@ class GotWpLoginRegister {
 	
 	public function signInButtonMarkup() 
 	{
+		
+		$currentUrl = $this->getCurrentUrl();
+		$loginUri = add_query_arg(['gotwplr_call' => 1], $currentUrl);
+		
 		$markup = '<div id="g_id_onload"
 		data-client_id="'. $this->clientId .'"
 		data-context="'. $this->getOption('ot_context') .'"
