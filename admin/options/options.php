@@ -99,6 +99,33 @@ $options[] = array(
 	'icon' => 'mdi-settings'
 );
 
+	$options[] = array(
+		'id'   => 'signin-button-position',
+		'name' => __('Signin Button Position', 'dilaz-panel'),
+		'type' => 'subheading',
+	);
+
+		$options[] = array(
+			'id'   => 'si_type',
+			'name' => __('Button Type:', 'dilaz-panel'),
+			// 'desc' => __('Images used as radio option fields.', 'dilaz-panel'),
+			'type' => 'radioimage',
+			'options' => array(
+				'after_logo' => array('src' => $parameters['dir_url'] .'assets/images/google/si_type_standard.png', 'alt' => 'Standard'),
+				'before_username' => array('src' => $parameters['dir_url'] .'assets/images/google/si_type_icon.png', 'alt' => 'Icon'),
+				'after_password' => array('src' => $parameters['dir_url'] .'assets/images/google/si_type_icon.png', 'alt' => 'Icon'),
+				'after_login_button' => array('src' => $parameters['dir_url'] .'assets/images/google/si_type_icon.png', 'alt' => 'Icon'),
+			),
+			'std'   => 'before_username',
+			'class' => ''
+		);
+		
+	$options[] = array(
+		'id'   => 'signin-button-style',
+		'name' => __('Signin Button Style', 'dilaz-panel'),
+		'type' => 'subheading',
+	);
+
 		$options[] = array(
 			'id'   => 'si_type',
 			'name' => __('Button Type:', 'dilaz-panel'),
