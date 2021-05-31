@@ -106,17 +106,16 @@ $options[] = array(
 	);
 
 		$options[] = array(
-			'id'   => 'si_type',
-			'name' => __('Button Type:', 'dilaz-panel'),
+			'id'   => 'si_button_position',
+			'name' => __('Button Position:', 'dilaz-panel'),
 			// 'desc' => __('Images used as radio option fields.', 'dilaz-panel'),
 			'type' => 'radioimage',
 			'options' => array(
-				'after_logo' => array('src' => $parameters['dir_url'] .'assets/images/google/si_type_standard.png', 'alt' => 'Standard'),
-				'before_username' => array('src' => $parameters['dir_url'] .'assets/images/google/si_type_icon.png', 'alt' => 'Icon'),
-				'after_password' => array('src' => $parameters['dir_url'] .'assets/images/google/si_type_icon.png', 'alt' => 'Icon'),
-				'after_login_button' => array('src' => $parameters['dir_url'] .'assets/images/google/si_type_icon.png', 'alt' => 'Icon'),
+				'form_before' => array('src' => $parameters['dir_url'] .'assets/images/google/btn-pos-form-before.png', 'alt' => 'Before the Login Form'),
+				'form_top' => array('src' => $parameters['dir_url'] .'assets/images/google/btn-pos-form-top.png', 'alt' => 'Top of Login Form '),
+				'form_bottom' => array('src' => $parameters['dir_url'] .'assets/images/google/btn-pos-form-bottom.png', 'alt' => 'Bottom of Login Form')
 			),
-			'std'   => 'before_username',
+			'std'   => 'form_top',
 			'class' => ''
 		);
 		
@@ -211,9 +210,9 @@ $options[] = array(
 		$options[] = array(
 			'id'    => 'si_width',
 			'name'  => __('Button Width:', 'dilaz-panel'),
-			'desc2'  => __('The minimum button width, in pixels. The maximum width available is 400 pixels.', 'dilaz-panel'),
+			'desc2'  => __('The minimum button width, in pixels. The maximum width available is 400 pixels. <br /> <b>270</b> if inside the form. <br /> <b>320</b> if outside the form.', 'dilaz-panel'),
 			'type'  => 'text',
-			'std'   => '',
+			'std'   => '270',
 			'class' => '',
 			'req_args' => array(
 				'si_additional_width' => 1
