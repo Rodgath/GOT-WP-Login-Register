@@ -93,11 +93,15 @@ class GotWpLoginRegister {
 	
 	public function login_scripts()
 	{
-		wp_register_script('gotwplr-client-lib-login', 'https://accounts.google.com/gsi/client', array(), false, false);
-		wp_enqueue_script('gotwplr-client-lib-login' );
+		$this->gClientLibrary();
 	}
 	
 	public function frontend_scripts()
+	{
+		$this->gClientLibrary();
+	}
+	
+	public function gClientLibrary()
 	{
 		wp_register_script('gotwplr-client-lib', 'https://accounts.google.com/gsi/client', array(), false, false);
 		wp_enqueue_script('gotwplr-client-lib' );
@@ -138,7 +142,7 @@ class GotWpLoginRegister {
 		if (is_user_logged_in()) 
 			return null;
 		
-		$button = '<div style="width: max-content; margin: 0 auto;">';
+		$button = '<div style="width: max-content; margin: 0 auto 20px;">';
 			$button .= $this->signInButtonMarkup();
 		$button .= '</div>';
 		
