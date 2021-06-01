@@ -1,5 +1,7 @@
 jQuery(document).ready(function($) {
 	
+	"use strict";
+	
 	/* Wait until Google client library is loaded */
 	window.onGoogleLibraryLoad = function() {
 		
