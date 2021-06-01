@@ -5,7 +5,7 @@
 
 .gotwplr-or-separator {
 	width: 100%;
-	margin-bottom: 30px;
+	margin-bottom: 30px !important;
 	margin-top: 30px;
 	text-align: center;
 	border-bottom: 1px solid #e0e0e0;
