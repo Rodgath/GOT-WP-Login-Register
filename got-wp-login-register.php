@@ -19,7 +19,7 @@ class GotWpLoginRegister {
 	
 	private $clientSecret;
 	
-	private $googleClient;
+	protected $googleClient;
 	
 	public function __construct()
 	{
