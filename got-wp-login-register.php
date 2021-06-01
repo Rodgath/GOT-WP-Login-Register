@@ -154,7 +154,7 @@ class GotWpLoginRegister {
 			if ($buttonPos == 'form_bottom') {
 			$button .= $this->orSeparator();
 			}
-			$button .= '<div style="width: max-content; margin: 0 auto 20px;">';
+			$button .= '<div class="gotwplr-signin-btn-wrap">';
 				$button .= $this->signInButtonMarkup();
 			$button .= '</div>';
 			if ($buttonPos == 'form_top') {
