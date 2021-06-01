@@ -167,7 +167,7 @@ class GotWpLoginRegister {
 	
 	public function orSeparator()
 	{
-		return '<p style="width: 100%; margin-bottom: 30px; margin-top: 30px; text-align: center; border-bottom: 1px solid #e0e0e0; line-height: .1em; font-weight: bold;"><span style="padding: 0 10px; background: #fff; color: #606060;">OR</span></p>';
+		return '<p class="gotwplr-or-separator"><span>OR</span></p>';
 	}
 	
 	public function signInButtonMarkup()
