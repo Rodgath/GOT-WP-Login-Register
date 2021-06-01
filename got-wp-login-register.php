@@ -172,29 +172,40 @@ class GotWpLoginRegister {
 		return '<p class="gotwplr-or-separator"><span>OR</span></p>';
 	}
 	
-	public function signInButtonMarkup($args)
+	public function signInButtonMarkup($attr)
 	{
 		
 		$currentUrl = $this->getCurrentUrl();
 		$loginUri = add_query_arg(['gotwplr_call' => 1], $currentUrl);
 		
+		$context = $args['context'] ? $args['context'] : $this->getOption('ot_context');
+		$ux_mode = $args['ux_mode'] ? $args['ux_mode'] : $this->getOption('ot_ux_mode');
+		$type = $args['type'] ? $args['type'] : $this->getOption('si_type');
+		$theme = $args['theme'] ? $args['theme'] : $this->getOption('si_theme');
+		$size = $args['size'] ? $args['size'] : $this->getOption('ot_ux_mode');
+		$text = $args['text'] ? $args['text'] : $this->getOption('si_text');
+		$shape = $args['shape'] ? $args['shape'] : $this->getOption('si_shape');
+		$logo_align = $args['logo_alignment'] || $args['width'] ? true : $this->getOption('si_additional_width');
+		$logo_alignment = $args['logo_alignment'] ? $args['logo_alignment'] : $this->getOption('si_logo_alignment');
+		$width = $args['width'] && $args['width'] > 0 ? $args['width'] : $this->getOption('si_width');
+		
 		$markup = '<div id="g_id_onload"
 		data-client_id="'. $this->clientId .'"
-		data-context="'. $this->getOption('ot_context') .'"
-		data-ux_mode="'. $this->getOption('ot_ux_mode') .'"
+		data-context="'. $context .'"
+		data-ux_mode="'. $ux_mode .'"
 		data-login_uri="'. $loginUri .'"
 		data-auto_prompt="false">
 		</div>';
 
 		$markup .= '<div class="g_id_signin"
-		data-type="'. $this->getOption('si_type') .'"
-		data-theme="'. $this->getOption('si_theme') .'"
-		data-size="'. $this->getOption('si_size') .'"
-		data-text="'. $this->getOption('si_text') .'" 
-		data-shape="'. $this->getOption('si_shape') .'"';
-		if ($this->getOption('si_additional_width')) {
-		$markup .= 'data-logo_alignment="'. $this->getOption('si_logo_alignment') .'"
-		data-width="'. $this->getOption('si_width') .'"';
+		data-type="'. $type .'"
+		data-theme="'. $theme .'"
+		data-size="'. $size .'"
+		data-text="'. $text .'" 
+		data-shape="'. $shape .'"';
+		if ($logo_align) {
+		$markup .= 'data-logo_alignment="'. $logo_alignment .'"
+		data-width="'. $width .'"';
 		}
 		$markup .= '></div>';
 		
@@ -394,7 +405,6 @@ class GotWpLoginRegister {
 		$args['logo_alignment'] = !empty(trim($logo_alignment)) ? $logo_alignment : false;
 		$args['width'] = !empty(trim($width)) ? $width : false;
 		
-		// var_dump($args);
 		$shortcode = '<div class="gotwplr-signin-sc">';
 			$shortcode .= $this->signInButtonMarkup($args);
 		$shortcode .= '</div>';
