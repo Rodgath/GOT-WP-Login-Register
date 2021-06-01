@@ -82,7 +82,10 @@ class GotWpLoginRegister {
 	
 	public function pluginLoaded()
 	{
-		add_filter('script_loader_tag', array($this, 'addLibClientAttr'), 10, 3);		
+		add_filter('script_loader_tag', array($this, 'addLibClientAttr'), 10, 3);
+		
+		/* Add Shortcodes */
+		add_shortcode('gotwplr', array($this, 'signInButtonShortcode'));
 	}
 	
 	public function includes()
@@ -362,6 +365,23 @@ class GotWpLoginRegister {
 		$client->setRedirectUri($this->getCurrentUrl());
 		
 		return $client;
+	}
+	
+	function signInButtonShortcode($attr)
+	{
+		ob_start();
+		
+		extract(shortcode_atts(array(
+			'width' => '',
+		), $attr));
+		
+		$shortcode = '<div class="gotwplr-signin-sc">';
+			$shortcode .= $this->signInButtonMarkup();
+		$shortcode .= '</div>';
+		
+		echo $shortcode;
+		
+		return ob_get_clean();
 	}
 	
 	public function getCurrentUrl()
