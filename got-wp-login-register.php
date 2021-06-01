@@ -96,6 +96,7 @@ class GotWpLoginRegister {
 		$this->gClientLibrary();
 		wp_register_script('gotwplr-js-login', GOTWPLR_ASSETS .'js/login.js', array('jquery'), null, true);
 		wp_enqueue_script('gotwplr-js-login');
+		wp_enqueue_style('logan-owl-css', GOTWPLR_ASSETS.'css/login.css');
 	}
 	
 	public function frontend_scripts()
