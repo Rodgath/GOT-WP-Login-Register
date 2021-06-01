@@ -2,3 +2,19 @@
     clear: both;
     display: inline-block;
 }
+
+.gotwplr-or-separator {
+	width: 100%;
+	margin-bottom: 30px;
+	margin-top: 30px;
+	text-align: center;
+	border-bottom: 1px solid #e0e0e0;
+	line-height: .1em;
+	font-weight: bold;
+}
+
+.gotwplr-or-separator span {
+	padding: 0 10px;
+	background: #fff;
+	color: #606060;
+}
