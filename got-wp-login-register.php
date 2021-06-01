@@ -172,7 +172,7 @@ class GotWpLoginRegister {
 		return '<p class="gotwplr-or-separator"><span>OR</span></p>';
 	}
 	
-	public function signInButtonMarkup()
+	public function signInButtonMarkup($args)
 	{
 		
 		$currentUrl = $this->getCurrentUrl();
@@ -372,11 +372,31 @@ class GotWpLoginRegister {
 		ob_start();
 		
 		extract(shortcode_atts(array(
-			'width' => '',
+			'context' => '',
+			'ux_mode' => '',
+			'type' => '',
+			'theme' => '',
+			'size' => '',
+			'text' => '',
+			'shape' => '',
+			'logo_alignment' => '',
+			'width' => ''
 		), $attr));
 		
+		$args = [];
+		$args['context'] = !empty(trim($context)) ? $context : false;
+		$args['ux_mode'] = !empty(trim($ux_mode)) ? $ux_mode : false;
+		$args['type'] = !empty(trim($type)) ? $type : false;
+		$args['theme'] = !empty(trim($theme)) ? $theme : false;
+		$args['size'] = !empty(trim($size)) ? $size : false;
+		$args['text'] = !empty(trim($text)) ? $text : false;
+		$args['shape'] = !empty(trim($shape)) ? $shape : false;
+		$args['logo_alignment'] = !empty(trim($logo_alignment)) ? $logo_alignment : false;
+		$args['width'] = !empty(trim($width)) ? $width : false;
+		
+		// var_dump($args);
 		$shortcode = '<div class="gotwplr-signin-sc">';
-			$shortcode .= $this->signInButtonMarkup();
+			$shortcode .= $this->signInButtonMarkup($args);
 		$shortcode .= '</div>';
 		
 		echo $shortcode;
