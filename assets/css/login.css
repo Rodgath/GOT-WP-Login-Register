@@ -18,3 +18,12 @@
 	background: #fff;
 	color: #606060;
 }
+
+.gotwplr-signin-btn-wrap {
+	width: max-content;
+	margin: 0 auto 20px;
+}
+
+#gotwplr-signin-btn.form_bottom  .gotwplr-signin-btn-wrap {
+	margin-bottom: 0
+}
