@@ -8,6 +8,8 @@ Text Domain: got-wp-lr
 Domain Path: /languages
 Version: 1.0
 Author URI: https://github.com/Rodgath
+License: GPL-2.0+
+License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 */
 
 // Exit if accessed directly
@@ -443,7 +445,7 @@ class GotWpLoginRegister {
 	public function requiredPlugins()
 	{
 		$requiredPlugins = array(
-			array (
+			array(
 				'name'     => 'Dilaz Panel',
 				'slug'     => 'dilaz-panel',
 				'source'   => 'https://github.com/Rodgath/Dilaz-Panel/archive/refs/heads/master.zip',
