@@ -422,6 +422,14 @@ class GotWpLoginRegister {
 	}
 	
 	/**
+	 * Register required plugins
+	 */
+	public function registerRequiredPlugins()
+	{
+		tgmpa($this->requiredPlugins());
+	}
+	
+	/**
 	 * List of required plugins
 	 */
 	public function requiredPlugins()
