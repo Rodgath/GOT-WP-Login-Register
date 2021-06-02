@@ -56,10 +56,10 @@ class GotWpLoginRegister {
 	private function constants()
 	{
 		defined('GOTWPLR_PREFIX') || define('GOTWPLR_PREFIX', 'gotwplr_');
-		defined('GOTWPLR_DIR') || define('GOTWPLR_DIR', trailingslashit(plugin_dir_path(__FILE__)));
-		defined('GOTWPLR_URI') || define('GOTWPLR_URI', trailingslashit(plugin_dir_url(__FILE__)));
-		defined('GOTWPLR_ADMIN') || define('GOTWPLR_ADMIN', GOTWPLR_DIR.trailingslashit('admin'));
-		defined('GOTWPLR_INC') || define('GOTWPLR_INC', GOTWPLR_DIR.trailingslashit('includes'));
+		defined('GOTWPLR_DIR')    || define('GOTWPLR_DIR', trailingslashit(plugin_dir_path(__FILE__)));
+		defined('GOTWPLR_URI')    || define('GOTWPLR_URI', trailingslashit(plugin_dir_url(__FILE__)));
+		defined('GOTWPLR_ADMIN')  || define('GOTWPLR_ADMIN', GOTWPLR_DIR.trailingslashit('admin'));
+		defined('GOTWPLR_INC')    || define('GOTWPLR_INC', GOTWPLR_DIR.trailingslashit('includes'));
 		defined('GOTWPLR_ASSETS') || define('GOTWPLR_ASSETS', GOTWPLR_URI.trailingslashit('assets'));
 	}
 	
@@ -86,11 +86,13 @@ class GotWpLoginRegister {
 		
 		/* Add Shortcodes */
 		add_shortcode('gotwplr', array($this, 'signInButtonShortcode'));
+		
 	}
 	
 	public function includes()
 	{
 		require_once GOTWPLR_ADMIN . 'admin.php';
+		require_once GOTWPLR_INC . 'class-tgm-plugin-activation.php';
 		
 	}
 	
@@ -172,7 +174,7 @@ class GotWpLoginRegister {
 		return '<p class="gotwplr-or-separator"><span>OR</span></p>';
 	}
 	
-	public function signInButtonMarkup($attr)
+	public function signInButtonMarkup($args)
 	{
 		
 		$currentUrl = $this->getCurrentUrl();
@@ -395,15 +397,15 @@ class GotWpLoginRegister {
 		), $attr));
 		
 		$args = [];
-		$args['context'] = !empty(trim($context)) ? $context : false;
-		$args['ux_mode'] = !empty(trim($ux_mode)) ? $ux_mode : false;
-		$args['type'] = !empty(trim($type)) ? $type : false;
-		$args['theme'] = !empty(trim($theme)) ? $theme : false;
-		$args['size'] = !empty(trim($size)) ? $size : false;
-		$args['text'] = !empty(trim($text)) ? $text : false;
-		$args['shape'] = !empty(trim($shape)) ? $shape : false;
+		$args['context']        = !empty(trim($context)) ? $context : false;
+		$args['ux_mode']        = !empty(trim($ux_mode)) ? $ux_mode : false;
+		$args['type']           = !empty(trim($type)) ? $type : false;
+		$args['theme']          = !empty(trim($theme)) ? $theme : false;
+		$args['size']           = !empty(trim($size)) ? $size : false;
+		$args['text']           = !empty(trim($text)) ? $text : false;
+		$args['shape']          = !empty(trim($shape)) ? $shape : false;
 		$args['logo_alignment'] = !empty(trim($logo_alignment)) ? $logo_alignment : false;
-		$args['width'] = !empty(trim($width)) ? $width : false;
+		$args['width']          = !empty(trim($width)) ? $width : false;
 		
 		$shortcode = '<div class="gotwplr-signin-sc">';
 			$shortcode .= $this->signInButtonMarkup($args);
