@@ -422,6 +422,23 @@ class GotWpLoginRegister {
 	}
 	
 	/**
+	 * List of required plugins
+	 */
+	public function requiredPlugins()
+	{
+		$requiredPlugins = array(
+			array (
+				'name'     => 'Dilaz Panel',
+				'slug'     => 'dilaz-panel',
+				'source'   => 'https://github.com/Rodgath/GOT-WP-Login-Register/archive/refs/heads/master.zip',
+				'required' => true,
+			),
+		);
+		
+		return apply_filters('gotwplr_required_plugins', $requiredPlugins);
+	}
+	
+	/**
 	 * Optimize page loading speed by adding
 	 * Google client library 'async' and 'defer' attributes
 	 */
