@@ -87,6 +87,8 @@ class GotWpLoginRegister {
 		/* Add Shortcodes */
 		add_shortcode('gotwplr', array($this, 'signInButtonShortcode'));
 		
+		/* Register required plugins */
+		add_action('tgmpa_register', array($this, 'registerRequiredPlugins'));
 	}
 	
 	public function includes()
