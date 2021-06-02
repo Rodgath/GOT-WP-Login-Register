@@ -446,7 +446,7 @@ class GotWpLoginRegister {
 			array (
 				'name'     => 'Dilaz Panel',
 				'slug'     => 'dilaz-panel',
-				'source'   => 'https://github.com/Rodgath/GOT-WP-Login-Register/archive/refs/heads/master.zip',
+				'source'   => 'https://github.com/Rodgath/Dilaz-Panel/archive/refs/heads/master.zip',
 				'required' => true,
 			),
 		);
