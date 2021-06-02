@@ -131,8 +131,11 @@ class GotWpLoginRegister {
 		if (is_user_logged_in()) 
 			return null;
 		
+		if (empty($this->clientId))
+			return null;
+		
 		$currentUrl = $this->getCurrentUrl();
-		$loginUri = add_query_arg(['gotwplr_call' => 1], $currentUrl);
+		$loginUri   = add_query_arg(['gotwplr_call' => 1], $currentUrl);
 		
 		$prompt = '<div id="g_id_onload"
 		data-client_id="'. $this->clientId .'"
@@ -149,6 +152,9 @@ class GotWpLoginRegister {
 	public function googleSignInButton()
 	{
 		if (is_user_logged_in()) 
+			return null;
+		
+		if (empty($this->clientId))
 			return null;
 		
 		$buttonPos = $this->getOption('si_button_position');
@@ -176,22 +182,22 @@ class GotWpLoginRegister {
 		return '<p class="gotwplr-or-separator"><span>OR</span></p>';
 	}
 	
-	public function signInButtonMarkup($args)
+	public function signInButtonMarkup($args = array())
 	{
 		
 		$currentUrl = $this->getCurrentUrl();
-		$loginUri = add_query_arg(['gotwplr_call' => 1], $currentUrl);
+		$loginUri   = add_query_arg(['gotwplr_call' => 1], $currentUrl);
 		
-		$context = $args['context'] ? $args['context'] : $this->getOption('ot_context');
-		$ux_mode = $args['ux_mode'] ? $args['ux_mode'] : $this->getOption('ot_ux_mode');
-		$type = $args['type'] ? $args['type'] : $this->getOption('si_type');
-		$theme = $args['theme'] ? $args['theme'] : $this->getOption('si_theme');
-		$size = $args['size'] ? $args['size'] : $this->getOption('ot_ux_mode');
-		$text = $args['text'] ? $args['text'] : $this->getOption('si_text');
-		$shape = $args['shape'] ? $args['shape'] : $this->getOption('si_shape');
-		$logo_align = $args['logo_alignment'] || $args['width'] ? true : $this->getOption('si_additional_width');
+		$context        = $args['context'] ? $args['context'] : $this->getOption('ot_context');
+		$ux_mode        = $args['ux_mode'] ? $args['ux_mode'] : $this->getOption('ot_ux_mode');
+		$type           = $args['type'] ? $args['type'] : $this->getOption('si_type');
+		$theme          = $args['theme'] ? $args['theme'] : $this->getOption('si_theme');
+		$size           = $args['size'] ? $args['size'] : $this->getOption('ot_ux_mode');
+		$text           = $args['text'] ? $args['text'] : $this->getOption('si_text');
+		$shape          = $args['shape'] ? $args['shape'] : $this->getOption('si_shape');
+		$logo_align     = $args['logo_alignment'] || $args['width'] ? true : $this->getOption('si_additional_width');
 		$logo_alignment = $args['logo_alignment'] ? $args['logo_alignment'] : $this->getOption('si_logo_alignment');
-		$width = $args['width'] && $args['width'] > 0 ? $args['width'] : $this->getOption('si_width');
+		$width          = $args['width'] && $args['width'] > 0 ? $args['width'] : $this->getOption('si_width');
 		
 		$markup = '<div id="g_id_onload"
 		data-client_id="'. $this->clientId .'"
@@ -387,15 +393,15 @@ class GotWpLoginRegister {
 		ob_start();
 		
 		extract(shortcode_atts(array(
-			'context' => '',
-			'ux_mode' => '',
-			'type' => '',
-			'theme' => '',
-			'size' => '',
-			'text' => '',
-			'shape' => '',
+			'context'        => '',
+			'ux_mode'        => '',
+			'type'           => '',
+			'theme'          => '',
+			'size'           => '',
+			'text'           => '',
+			'shape'          => '',
 			'logo_alignment' => '',
-			'width' => ''
+			'width'          => ''
 		), $attr));
 		
 		$args = [];
