@@ -236,3 +236,21 @@ $options[] = array(
 			),
 			'req_action' => 'show'
 		);
+
+	$options[] = array(
+		'id'   => 'signin-button-with-oen-tap',
+		'name' => __('Use with One-Tap', 'dilaz-panel'),
+		'type' => 'subheading',
+	);
+		$options[] = array(
+			'id'    => 'si_auto_prompt',
+			'name'  => __('Show Google One Tap:', 'dilaz-panel'),
+			'desc'  => __('Whether to show Google One Tap in pages where Sign-In button is used.', 'dilaz-panel'),
+			'type' => 'switch',
+			'options' => array(
+				1 => __('Yes', 'dilaz-panel'), 
+				0 => __('No', 'dilaz-panel'),
+			),
+			'std'  => 0,
+			'class' => ''
+		);
