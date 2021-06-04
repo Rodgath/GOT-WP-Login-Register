@@ -4,10 +4,10 @@ Plugin Name: GOT WP Login Register
 Plugin URI: https://github.com/Rodgath/GOT-WP-Login-Register
 Description: Google One Tap Login and Register for WordPress.
 Author: Rodgath
+Author URI: https://github.com/Rodgath
 Text Domain: got-wp-lr
 Domain Path: /languages
 Version: 1.0
-Author URI: https://github.com/Rodgath
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 */
@@ -200,13 +200,14 @@ class GotWpLoginRegister {
 		$logo_align     = $args['logo_alignment'] || $args['width'] ? true : $this->getOption('si_additional_width');
 		$logo_alignment = $args['logo_alignment'] ? $args['logo_alignment'] : $this->getOption('si_logo_alignment');
 		$width          = $args['width'] && $args['width'] > 0 ? $args['width'] : $this->getOption('si_width');
+		$auto_prompt    = $args['auto_prompt'] > 0 ? $args['auto_prompt'] : $this->intBoolToStrBool($this->getOption('si_auto_prompt'));
 		
 		$markup = '<div id="g_id_onload"
 		data-client_id="'. $this->clientId .'"
 		data-context="'. $context .'"
 		data-ux_mode="'. $ux_mode .'"
 		data-login_uri="'. $loginUri .'"
-		data-auto_prompt="false">
+		data-auto_prompt="' . $auto_prompt .'">
 		</div>';
 
 		$markup .= '<div class="g_id_signin"
@@ -403,7 +404,8 @@ class GotWpLoginRegister {
 			'text'           => '',
 			'shape'          => '',
 			'logo_alignment' => '',
-			'width'          => ''
+			'width'          => '',
+			'auto_prompt'    => ''
 		), $attr));
 		
 		$args = [];
