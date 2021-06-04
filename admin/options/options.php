@@ -17,7 +17,7 @@ $options[] = array(
 			'id'    => 'client_id',
 			'name'  => __('Client Id:', 'dilaz-panel'),
 			'desc'  => __('Google API client ID.', 'dilaz-panel'),
-			'desc2'  => __('Example: <code>1234567890-abc123def456.apps.googleusercontent.com</code>. <br /> <a href="https://console.developers.google.com/apis/dashboard">Click here to create your own client Id</a>', 'dilaz-panel'),
+			'desc2'  => __('Example: <code>1234567890-abc123def456.apps.googleusercontent.com</code>. <br /> <a href="https://console.developers.google.com/apis/dashboard" target="_blank">Click here to create your own client Id</a>', 'dilaz-panel'),
 			'type'  => 'text',
 			'std'   => '',
 			'class' => ''
