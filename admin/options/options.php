@@ -23,7 +23,7 @@ $options[] = array(
 		);
 		$options[] = array(
 			'id'    => 'client_secret',
-			'name'  => __('Client Secret:', 'dilaz-panel'),
+			'name'  => __('Client Secret (Optional):', 'dilaz-panel'),
 			'desc2'  => __('Google API client Secret.', 'dilaz-panel'),
 			'type'  => 'text',
 			'std'   => '',
