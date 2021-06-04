@@ -61,7 +61,7 @@ $options[] = array(
 				1 => __('Yes', 'dilaz-panel'), 
 				0 => __('No', 'dilaz-panel'),
 			),
-			'std'  => 0,
+			'std'  => 1,
 			'class' => ''
 		);
 		$options[] = array(
