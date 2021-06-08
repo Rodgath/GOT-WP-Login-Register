@@ -14,5 +14,13 @@
 ![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/03.png "Enter porject details")
 5. Select **Google People API** and proceed.
 ![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/04.png "Enter porject details")
-6. From the **Google People API** click on the **Enable** button.
-
+6. From the *Google People API* page click on the **Enable** button.
+![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/05.png "Enter porject details")
+7. From the *API & Services* page, click on the **CREATE CREDENTIALS** button.
+![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/06.png "Enter porject details")
+8. From the *Credentials* tab, select **People API**, **User data** and click the **NEXT** button.
+![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/07.png "Enter porject details")
+9. From the *OAuth Consent Screen* tab, select **App information** and click the **SAVE AND CONTINUE** button.
+![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/08.png "Enter porject details")
+10. From the *Scopes* tab, click on the **ADD OR REMOVE SCOPES** button.
+![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/09.png "Enter porject details")
