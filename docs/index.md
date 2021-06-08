@@ -1,7 +1,6 @@
 ## Table of Contents
 1. [Installation](#installation)
 2. [Setup Google API](#setup-google-api)
-3. [Configuration](#configuration)
 
  
  
@@ -12,7 +11,7 @@
 3. Activate the plugin through the 'Plugins' menu in WordPress administration panel.
 4. You will get an alert to install *Dilaz Panel* options framework plugin; Install and activate it.
 5. Go to **GOT WP LR Panel** options page.
-6. Add your Google **Client Id** and configure other settings.
+6. Add your Google **Client Id** and configure other settings. NOTE: Client
  
  
  
