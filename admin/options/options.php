@@ -22,14 +22,14 @@ $options[] = array(
 			'std'   => '',
 			'class' => ''
 		);
-		$options[] = array(
-			'id'    => 'client_secret',
-			'name'  => __('Client Secret (Optional):', 'dilaz-panel'),
-			'desc2'  => __('Google API client Secret.', 'dilaz-panel'),
-			'type'  => 'text',
-			'std'   => '',
-			'class' => ''
-		);
+		// $options[] = array(
+			// 'id'    => 'client_secret',
+			// 'name'  => __('Client Secret (Optional):', 'dilaz-panel'),
+			// 'desc2'  => __('Google API client Secret.', 'dilaz-panel'),
+			// 'type'  => 'text',
+			// 'std'   => '',
+			// 'class' => ''
+		// );
 
 # One Tap Settings
 # =============================================================================================
