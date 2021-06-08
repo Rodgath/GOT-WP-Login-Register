@@ -24,3 +24,17 @@
 ![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/08.png "Enter porject details")
 10. From the *Scopes* tab, click on the **ADD OR REMOVE SCOPES** button.
 ![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/09.png "Enter porject details")
+11. From the *Update selected scopes* popup, enter ***userinfo*** in the filter search field and select the *userinfo* properties provided.
+![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/10.png "Enter porject details")
+12. From the *Update selected scopes* popup, enter ***openid*** in the filter search field and select the *openid* properties provided.
+![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/11.png "Enter porject details")
+13. After adding all the preferred scopes, click on the **UPDATE** button.
+![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/12.png "Enter porject details")
+14. From the *OAuth Client ID* tab;
+a) Select **Web application** as the *Application type *
+![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/13.png "Enter porject details")
+b) From the *Authorized JavaScript origins* and *Authorized redirect URIs*, click on the **ADD URI** buttons.
+![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/14.png "Enter porject details")
+c) Add the details as shown below.
+![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/15.png "Enter porject details")
+
