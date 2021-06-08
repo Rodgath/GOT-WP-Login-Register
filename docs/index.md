@@ -45,14 +45,14 @@
 
 14. From the *OAuth Client ID* tab;
 
-a) Select **Web application** as the *Application type**.
-![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/13.png)
+	a) Select **Web application** as the *Application type*.
+	![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/13.png)
 
-b) From the *Authorized JavaScript origins* and *Authorized redirect URIs*, click on the **ADD URI** buttons.
-![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/14.png)
+	b) From the *Authorized JavaScript origins* and *Authorized redirect URIs*, click on the **ADD URI** buttons.
+	![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/14.png)
 
-c) Add the details as shown below.
-![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/15.png)
+	c) Add the details as shown below.
+	![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/15.png)
 
 15. From the *Your Credentials* tab, youl will see your app's **Client ID** and then click the **DONE** button.
 ![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/16.png)
