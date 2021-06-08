@@ -1,16 +1,8 @@
-=== GOT-WP-Login-Register ===
-Contributors: Rodgath
-Tags: login, signin, register, signup, google, google login, google sign in, google one tap, google signup, google register, google auth, open id
-Requires at least: 5.0
-Tested up to: 5.5
-Stable tag: 1.0
-Requires PHP: 5.6
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+# GOT-WP-Login-Register #
 
 Secure WordPress signin and signup using Google One-Tap and Google SignIn button through Google Authentication API.
 
-== Description ==
+## Description ##
 
 This plugin allows user account creation and management using the Google Authentication API. 
 
@@ -19,7 +11,7 @@ Users can login securely to their existing WordPress account with their Google e
 Users who are not registered on a WordPress website can securely register and create an account using their Google email.
 
 
-### General Features:
+## General Features: ##
 
 * Easy to use options panel.
 * Seemless WordPress user account creation using the user's Google email.
@@ -32,7 +24,7 @@ Users who are not registered on a WordPress website can securely register and cr
 * Automatic Constant Updates.
 
 
-### Google One-Tap Features:
+## Google One-Tap Features: ##
 
 * One-Tap has 3 Contexts: *"Sign in with Google"*, *"Sign up with Google"*, *"Sign up with Google"*
 * Login UX Mode: *Popup window* or *Google page redirection*.
@@ -40,7 +32,7 @@ Users who are not registered on a WordPress website can securely register and cr
 * Cancel on tap outside(Yes/No): Whether or not to cancel the One Tap request if the user clicks outside of the prompt.
 
 
-### Google Signin Button Features:
+## Google Signin Button Features: ##
 
 * *Position:* Above the form, Top of the form, Bottom of the form.
 * *Style:* Standard, Icon.
@@ -52,10 +44,7 @@ Users who are not registered on a WordPress website can securely register and cr
 * Logo alignment.
 * *Google SignIn button* shortcode on any page using `[gotwplr]` with options support.
 
-= Please Vote On This Plugin =
-Your votes count! Thank you.
-
-== Installation ==
+## Installation ##
 
 1. Download and unzip the latest release zip file.
 1. Using WordPress plugin uploader, upload **GOT WP Login Register** plugin zip file to your WordPress site OR upload the entire plugin directory 'got-wp-login-register' to the '/wp-content/plugins/' directory.
@@ -64,31 +53,16 @@ Your votes count! Thank you.
 1. Go to **GOT WP LR Panel** options page.
 1. Add your Google **Client Id** and configure other settings.
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions ##
 
-= Do I need a Google account to use this plugin? =
+### Do I need a Google account to use this plugin? ###
 
 Yes. You need to create a Google web application on [Google API Console](https://console.cloud.google.com/home "Google APIs & Services").
 
-= Do I need to create a Google web application? =
+### Do I need to create a Google web application? ###
 
 Yes. Before you can integrate Google Sign-In or Google One-Tap into your website, you must have a Google API project. In the project, you create a client ID, which you need to call the sign-in or one-tap API.
 
-= How do I create a Google API project? =
+### How do I create a Google API project? ###
 
 [Click here for detailed instructions on how to setup a Google API project](https://rodgath.github.io/GOT-WP-Login-Register/#setup-google-api).
-
-== Screenshots ==
-
-1. Google One-Tap prompt.
-2. Google One-Tap prompt within a webpage.
-3. Google SignIn button before the login form.
-4. Google SignIn button at the top of the login form.
-5. Google SignIn button at the bottom of the login form.
-6. Options panel.
-
-== Changelog ==
-
-= 1.0 =
-*Release Date - 8th June, 2021*
-* Initial Release
