@@ -69,3 +69,4 @@
 19. From the sidebar click on *Domain verification*, and proceed as instructed.
 ![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/20.png)
 
+20. DONE.
