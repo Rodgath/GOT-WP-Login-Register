@@ -3,14 +3,27 @@
 2. [Setup Google API](#setup-google-api)
 3. [Configuration](#configuration)
 
+ 
+ 
 <a id="installation"></a>Installation
 ============
+1. Download and unzip the latest release zip file.
+2. Using WordPress plugin uploader, upload **GOT WP Login Register** plugin zip file to your WordPress site OR upload the entire plugin directory '*got-wp-login-register*' to the '*/wp-content/plugins/*' directory.
+3. Activate the plugin through the 'Plugins' menu in WordPress administration panel.
+4. You will get an alert to install *Dilaz Panel* options framework plugin; Install and activate it.
+5. Go to **GOT WP LR Panel** options page.
+6. Add your Google **Client Id** and configure other settings.
+ 
+ 
+ 
+<a id="setup-google-api"></a>Setup Google API
+============
 **1.** Go to the [Google API Console](https://console.cloud.google.com/projectselector2/apis/library){:target="_blank" rel="noopener"}.
-
-
+ 
+ 
 -------------------------------------------------------------------------------------------------------------
-
-
+ 
+ 
 **2.** Select an existing project, or create a new one by selecting **CREATE PROJECT**.
 ![alt text](https://raw.githubusercontent.com/Rodgath/DevResources/main/GOT-WP-Login-Register/console/01.png "Select Porject or Create Project")
 
