@@ -12,7 +12,7 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       got-wp-lr
  * Domain Path:       /languages
-*/
+ */
 
 // Exit if accessed directly
 defined('ABSPATH') || exit;
@@ -393,7 +393,7 @@ class GotWpLoginRegister {
 		return $client;
 	}
 	
-	function signInButtonShortcode($attr)
+	public function signInButtonShortcode($attr)
 	{
 		ob_start();
 		
