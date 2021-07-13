@@ -28,13 +28,13 @@ Users who are not registered on a WordPress website can securely register and cr
 * Visible only to non-logged in users.
 * Modern browsers compatible.
 * Shortcode support. 
-* Custom look and feel.
+* Customizable look and feel.
 * Automatic Constant Updates.
 
 
 ### Google One-Tap Features:
 
-* One-Tap has 3 Contexts: *"Sign in with Google"*, *"Sign up with Google"*, *"Sign up with Google"*
+* One-Tap has 3 Contexts: *"Sign in with Google"*, *"Sign up with Google"*, *"Use with Google"*
 * Login UX Mode: *Popup window* or *Google page redirection*.
 * Auto-select(Yes/No): Whether or not to return an ID token automatically, without any user interaction.
 * Cancel on tap outside(Yes/No): Whether or not to cancel the One Tap request if the user clicks outside of the prompt.
@@ -42,15 +42,15 @@ Users who are not registered on a WordPress website can securely register and cr
 
 ### Google Signin Button Features:
 
-* *Position:* Above the form, Top of the form, Bottom of the form.
-* *Style:* Standard, Icon.
-* *Theme:* Outline, Blue-filled, Black-filled.
-* *Size:* Large, Medium, Small.
-* *Text:* Sign in with Google, Sign up with Google, Continue with Google, Sign in.
-* *Shape:* Rectangular, Pill, Circle, Square.
-* Custom width.
-* Logo alignment.
-* *Google SignIn button* shortcode on any page using `[gotwplr]` with options support.
+* *Position* — Above the form, Top of the form, Bottom of the form.
+* *Style* — Standard, Icon.
+* *Theme* — Outline, Blue-filled, Black-filled.
+* *Size* — Large, Medium, Small.
+* *Text* — Sign in with Google, Sign up with Google, Continue with Google, Sign in.
+* *Shape* — Rectangular, Pill, Circle, Square.
+* *Custom width* — Enter the preferred widget width.
+* *Logo alignment* — Align left or right.
+* *Google SignIn button* — shortcode on any page using `[gotwplr]` with options support.
 
 = Please Vote On This Plugin =
 Your votes count! Thank you.
@@ -90,5 +90,5 @@ Yes. Before you can integrate Google Sign-In or Google One-Tap into your website
 == Changelog ==
 
 = 1.0 =
-*Release Date - 8th June, 2021*
+*Release Date - 15th July, 2021*
 * Initial Release
