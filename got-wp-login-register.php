@@ -52,7 +52,7 @@ class GotWpLoginRegister {
 		/* Includes */
 		$this->includes();
 		
-		$this->clientId = $this->getOption('client_id');
+		$this->clientId     = $this->getOption('client_id');
 		$this->clientSecret = $this->getOption('client_secret');
 		$this->googleClient = $this->getGoogleClient();
 	}
@@ -98,8 +98,7 @@ class GotWpLoginRegister {
 	public function includes()
 	{
 		require_once GOTWPLR_ADMIN . 'admin.php';
-		require_once GOTWPLR_INC . 'class-tgm-plugin-activation.php';
-		
+		require_once GOTWPLR_INC . 'class-tgm-plugin-activation.php';		
 	}
 	
 	public function login_scripts()
@@ -295,12 +294,9 @@ class GotWpLoginRegister {
 	{
 		
 		$userEmail = sanitize_email($payload['email']);
-		
-		$userName = $this->generateUsername($userEmail);
-		
-		$userPass = wp_generate_password(12, false);
-		
-		$userId = wp_create_user($userName, $userPass, $userEmail);
+		$userName  = $this->generateUsername($userEmail);
+		$userPass  = wp_generate_password(12, false);
+		$userId    = wp_create_user($userName, $userPass, $userEmail);
 		
 		if ($userId) {
 			
