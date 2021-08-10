@@ -44,7 +44,7 @@ class GotWpLoginRegister {
 		add_action('wp_footer', array($this, 'oneTapPrompt'), 99);
 		
 		/* Load login styles and scripts */
-		add_action('login_enqueue_scripts', array($this, 'login_scripts'));
+		add_action('login_enqueue_scripts', array($this, 'loginScripts'));
 		
 		/* Append Google Signin button to WordPress login form */
 		add_filter('login_form', array($this, 'googleSignInButton'));
@@ -101,7 +101,7 @@ class GotWpLoginRegister {
 		require_once GOTWPLR_INC . 'class-tgm-plugin-activation.php';		
 	}
 	
-	public function login_scripts()
+	public function loginScripts()
 	{
 		$this->gClientLibrary();
 		wp_enqueue_script('gotwplr-js-login', GOTWPLR_ASSETS .'js/login.js', array('jquery'), null, true);
