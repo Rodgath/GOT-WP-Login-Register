@@ -38,7 +38,7 @@ class GotWpLoginRegister {
 		add_action('plugins_loaded', array($this, 'pluginLoaded'));
 
 		/* Load frontend styles and scripts */
-		add_action('wp_enqueue_scripts', array($this, 'frontend_scripts'));
+		add_action('wp_enqueue_scripts', array($this, 'frontendScripts'));
 		
 		/* Append Google one tap prompt within the <body> tag */
 		add_action('wp_footer', array($this, 'oneTapPrompt'), 99);
@@ -108,7 +108,7 @@ class GotWpLoginRegister {
 		wp_enqueue_style('logan-owl-css', GOTWPLR_ASSETS.'css/login.css');
 	}
 	
-	public function frontend_scripts()
+	public function frontendScripts()
 	{
 		$this->gClientLibrary();
 	}
