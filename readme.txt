@@ -90,5 +90,5 @@ Yes. Before you can integrate Google Sign-In or Google One-Tap into your website
 == Changelog ==
 
 = 1.0 =
-*Release Date - 10th July, 2021*
+*Release Date - 10th August, 2021*
 * Initial Release
