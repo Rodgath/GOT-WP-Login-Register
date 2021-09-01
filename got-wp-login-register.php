@@ -191,17 +191,17 @@ class GotWpLoginRegister {
 		$currentUrl = $this->getCurrentUrl();
 		$loginUri   = add_query_arg(['gotwplr_call' => 1], $currentUrl);
 		
-		$context        = $args['context'] ? $args['context'] : $this->getOption('ot_context');
-		$ux_mode        = $args['ux_mode'] ? $args['ux_mode'] : $this->getOption('ot_ux_mode');
-		$type           = $args['type'] ? $args['type'] : $this->getOption('si_type');
-		$theme          = $args['theme'] ? $args['theme'] : $this->getOption('si_theme');
-		$size           = $args['size'] ? $args['size'] : $this->getOption('ot_ux_mode');
-		$text           = $args['text'] ? $args['text'] : $this->getOption('si_text');
-		$shape          = $args['shape'] ? $args['shape'] : $this->getOption('si_shape');
-		$logo_align     = $args['logo_alignment'] || $args['width'] ? true : $this->getOption('si_additional_width');
-		$logo_alignment = $args['logo_alignment'] ? $args['logo_alignment'] : $this->getOption('si_logo_alignment');
-		$width          = $args['width'] && $args['width'] > 0 ? $args['width'] : $this->getOption('si_width');
-		$auto_prompt    = $args['auto_prompt'] > 0 ? $args['auto_prompt'] : $this->intBoolToStrBool($this->getOption('si_auto_prompt'));
+		$context        = isset($args['context']) ? $args['context'] : $this->getOption('ot_context');
+		$ux_mode        = isset($args['ux_mode']) ? $args['ux_mode'] : $this->getOption('ot_ux_mode');
+		$type           = isset($args['type']) ? $args['type'] : $this->getOption('si_type');
+		$theme          = isset($args['theme']) ? $args['theme'] : $this->getOption('si_theme');
+		$size           = isset($args['size']) ? $args['size'] : $this->getOption('ot_ux_mode');
+		$text           = isset($args['text']) ? $args['text'] : $this->getOption('si_text');
+		$shape          = isset($args['shape']) ? $args['shape'] : $this->getOption('si_shape');
+		$logo_align     = (isset($args['logo_alignment']) && $args['logo_alignment']) || (isset($args['width']) && $args['width']) ? true : $this->getOption('si_additional_width');
+		$logo_alignment = isset($args['logo_alignment']) ? $args['logo_alignment'] : $this->getOption('si_logo_alignment');
+		$width          = isset($args['width']) && $args['width'] > 0 ? $args['width'] : $this->getOption('si_width');
+		$auto_prompt    = isset($args['auto_prompt']) > 0 ? $args['auto_prompt'] : $this->intBoolToStrBool($this->getOption('si_auto_prompt'));
 		
 		$markup = '<div id="g_id_onload"
 		data-client_id="'. $this->clientId .'"
