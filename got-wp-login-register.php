@@ -195,7 +195,7 @@ class GotWpLoginRegister {
 		$ux_mode        = isset($args['ux_mode']) ? $args['ux_mode'] : $this->getOption('ot_ux_mode');
 		$type           = isset($args['type']) ? $args['type'] : $this->getOption('si_type');
 		$theme          = isset($args['theme']) ? $args['theme'] : $this->getOption('si_theme');
-		$size           = isset($args['size']) ? $args['size'] : $this->getOption('ot_ux_mode');
+		$size           = isset($args['size']) ? $args['size'] : $this->getOption('si_size');
 		$text           = isset($args['text']) ? $args['text'] : $this->getOption('si_text');
 		$shape          = isset($args['shape']) ? $args['shape'] : $this->getOption('si_shape');
 		$logo_align     = (isset($args['logo_alignment']) && $args['logo_alignment']) || (isset($args['width']) && $args['width']) ? true : $this->getOption('si_additional_width');
