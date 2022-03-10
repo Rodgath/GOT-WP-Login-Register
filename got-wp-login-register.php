@@ -303,7 +303,7 @@ class GotWpLoginRegister {
 			wp_update_user(
 				array(
 					'ID' => $userId,
-					'display_name' => sanitize_user($payload['name'])
+					'display_name' => sanitize_text_field($payload['name'])
 				)
 			);
 			
