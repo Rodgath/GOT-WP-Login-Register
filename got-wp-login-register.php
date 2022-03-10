@@ -294,7 +294,7 @@ class GotWpLoginRegister {
 	{
 		
 		$userEmail = sanitize_email($payload['email']);
-		$userName  = $this->generateUsername($userEmail);
+		$userName  = sanitize_user($this->generateUsername($userEmail));
 		$userPass  = wp_generate_password(12, false);
 		$userId    = wp_create_user($userName, $userPass, $userEmail);
 		
